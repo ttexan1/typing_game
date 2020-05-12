@@ -22,13 +22,16 @@ func main() {
 	flag.IntVar(&t, "t", t, "use")
 	flag.Parse()
 	fileName := flag.Args()[0]
+
+	// 単語登録
 	data, err := ioutil.ReadFile(fileName)
 	if err != nil {
 		log.Fatal(err)
 		return
 	}
-
 	words := strings.Split(string(data[:]), "\n")
+
+	// 描画
 	rand.Seed(time.Now().Unix())
 	currentWord := words[rand.Intn(len(words))]
 	fmt.Print(currentWord, ">")
